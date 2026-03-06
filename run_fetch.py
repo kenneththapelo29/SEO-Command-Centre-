@@ -1,13 +1,19 @@
 import argparse, sys, time, importlib
 from datetime import datetime
-VALID = ["gsc","ga4","ads","ai"]
-FETCHERS = {"gsc":("fetchers.fetch_gsc","Google Search Console"),"ga4":("fetchers.fetch_ga4","Google Analytics 4"),"ads":("fetchers.fetch_ads","Google Ads"),"ai":("fetchers.fetch_ai_visibility","AI Visibility")}
+VALID = ["gsc","ga4","ads","ai","forms"]
+FETCHERS = {
+    "gsc":("fetchers.fetch_gsc","Google Search Console"),
+    "ga4":("fetchers.fetch_ga4","Google Analytics 4"),
+    "ads":("fetchers.fetch_ads","Google Ads"),
+    "ai":("fetchers.fetch_ai_visibility","AI Visibility"),
+    "forms":("fetchers.fetch_forms","Google Forms")
+}
 def main():
     p = argparse.ArgumentParser()
     p.add_argument("--sources", default=",".join(VALID))
     args = p.parse_args()
     requested = [s.strip() for s in args.sources.split(",")]
-    print("SEO Command Center")
+    print(f"SEO Command Center - {datetime.now().strftime('%Y-%m-%d %H:%M')}")
     results = {}
     for source in requested:
         mod, label = FETCHERS[source]

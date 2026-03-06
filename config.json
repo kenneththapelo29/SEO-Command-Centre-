@@ -17,5 +17,15 @@
   "dataforseo_login": "",
   "dataforseo_password": "",
   "serpapi_key": "",
-  "searchapi_key": ""
+  "searchapi_key": "",
+  "google_forms": [
+    {
+      "title": "Contact Form Responses",
+      "output": "contact_leads.json"
+    },
+    {
+      "title": "Enquiry Form Responses",
+      "output": "enquiry_leads.json"
+    }
+  ]
 }

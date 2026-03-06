@@ -46,3 +46,22 @@ Recommended Actions. Save to reports/report-YYYY-MM-DD.md
 - Always verify numbers against source JSON before sharing with clients
 - GSC has ~3 day lag, GA4 has ~1 day lag
 - AI visibility data is directional — treat as a wind sock not GPS
+
+## Google Forms prompts
+
+### 7. Lead source analysis
+Read data/forms/all_leads.json and data/gsc/queries.json.
+Which organic keywords are driving the most form submissions?
+Cross-reference submission timestamps with GSC click data.
+### 8. Cost per lead
+Read data/forms/all_leads.json and data/ads/search_terms.json.
+Calculate cost per lead from paid vs organic traffic.
+Which campaigns are generating leads vs burning budget?
+### 9. Lead to traffic ratio
+Read data/forms/all_leads.json and data/ga4/channel_traffic.json.
+Which traffic channels convert best to form submissions?
+Show conversion rate by channel.
+### 10. Full funnel report
+Read all data sources including data/forms/.
+Show the complete funnel: impressions to clicks to sessions to leads.
+Where are we losing people? Where should we invest more?
