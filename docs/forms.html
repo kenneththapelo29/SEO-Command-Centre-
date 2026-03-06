@@ -55,6 +55,14 @@ td:first-child{color:#ccc}
   <h1>Google Forms</h1>
   <p class="page-sub">Connect form submission data to your SEO analysis.</p>
   
+<div class="warn">Before using this fetcher you must enable two additional APIs in your Google Cloud project: <strong>Google Sheets API</strong> and <strong>Google Drive API</strong>. Without these the fetcher will fail with a permission error even if your service account is set up correctly.</div>
+
+<h2>Enable the required APIs</h2>
+<p>Go to <a href="https://console.cloud.google.com/apis/library" target="_blank">console.cloud.google.com/apis/library</a> and enable:</p>
+<p>- <strong>Google Sheets API</strong></p>
+<p>- <strong>Google Drive API</strong></p>
+<p>These are separate from the Search Console and Analytics APIs you enabled during initial setup.</p>
+
 <h2>How it works</h2>
 <p>Google Forms automatically saves responses to a linked Google Sheet. The fetcher reads that sheet via the Google Sheets API using the same service account.</p>
 <h2>Setup</h2>

@@ -89,7 +89,13 @@ cd SEO-Command-Centre-</code></pre>
 
   <div class="success">If you see checkmarks and row counts — you are set up. Open Claude Code in the project directory and start asking questions.</div>
 
-  <h2>Common errors</h2>
+  <h2>Google Forms — additional APIs</h2>
+<p>If you plan to use the Google Forms fetcher, you need two extra APIs enabled in your Google Cloud project:</p>
+<p>- <strong>Google Sheets API</strong></p>
+<p>- <strong>Google Drive API</strong></p>
+<p>Enable them at <a href="https://console.cloud.google.com/apis/library" target="_blank">console.cloud.google.com/apis/library</a> the same way you enabled the Search Console and Analytics APIs.</p>
+
+<h2>Common errors</h2>
   <p><strong>"The caller does not have permission"</strong> — the service account email was not added to the GSC or GA4 property. Go back to Step 4.</p>
   <p><strong>"File not found: service-account-key.json"</strong> — the key file is not in the project root directory. Move it there.</p>
   <p><strong>"ModuleNotFoundError"</strong> — dependencies not installed. Run <code>pip install -r requirements.txt</code> again.</p>
