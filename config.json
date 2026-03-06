@@ -1,0 +1,21 @@
+{
+  "name": "Your Site Name",
+  "domain": "yourdomain.com",
+  "gsc_property": "https://www.yourdomain.com/",
+  "ga4_property_id": "000000000",
+  "google_ads_customer_id": "",
+  "industry": "Your Industry",
+  "competitors": [
+    "https://competitor1.com/",
+    "https://competitor2.com/"
+  ],
+  "ai_visibility_source": "bing_csv",
+  "ai_visibility_keywords": [
+    "your brand name",
+    "your main keyword"
+  ],
+  "dataforseo_login": "",
+  "dataforseo_password": "",
+  "serpapi_key": "",
+  "searchapi_key": ""
+}

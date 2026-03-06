@@ -1,0 +1,9 @@
+service-account-key.json
+google-ads.yaml
+.env
+data/
+reports/
+__pycache__/
+*.py[cod]
+.venv/
+venv/
