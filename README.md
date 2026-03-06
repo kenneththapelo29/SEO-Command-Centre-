@@ -1,51 +1,88 @@
-# SEO Command Center
-
-A Claude Code-powered SEO toolkit for GSC, GA4, Google Ads and AI visibility.
-
-## Quick Start
-
-1. Clone: `git clone https://github.com/kenneththapelo29/SEO-Command-Centre-.git`
-2. Install: `pip install -r requirements.txt`
-3. Add `service-account-key.json` to project root
-4. Edit `config.json` with your site details
-5. Run: `python run_fetch.py --sources gsc,ga4`
-
-## Setup
-
-### Google Cloud (GSC + GA4)
-
-1. Create a project at https://console.cloud.google.com
-2. Enable Search Console API and Google Analytics Data API
-3. Create a service account and download the JSON key
-4. Add service account email to your GSC and GA4 properties
-
-### Google Ads (optional)
-
-Run `python scripts/setup_auth.py` after getting a developer token from Google Ads API Center.
-
-## Usage
-
-```bash
-python run_fetch.py --sources gsc,ga4
-python run_fetch.py --sources gsc,ga4,ads,ai
-```
-
-Open Claude Code in this directory and ask questions like:
-
-- Which keywords am I paying for that I already rank for organically?
-- Which pages have high impressions but low CTR?
-- Which pages have high bounce rates but strong GSC positions?
-
-See CLAUDE.md for the full prompt library.
-
-## AI Visibility
-
-Supports Bing Webmaster Tools (free), DataForSEO, SerpApi and direct LLM API calls.
-
-## Security
-
-service-account-key.json and google-ads.yaml are in .gitignore - never commit them.
-
-## License
-
-MIT
+python3 << 'EOF'
+path = "/data/data/com.termux/files/home/seo-command-center/README.md"
+lines = []
+lines.append("# SEO Command Center\n")
+lines.append("### Stop switching tabs. Start asking questions.\n\n")
+lines.append("One setup. Every SEO answer in seconds.\n\n")
+lines.append("---\n\n")
+lines.append("## The problem with SEO analysis today\n\n")
+lines.append("Every answer means the same painful loop:\n\n")
+lines.append("| The old way | With SEO Command Center |\n")
+lines.append("|-------------|------------------------|\n")
+lines.append("| Export CSVs from GSC, GA4, Ads | Run one command |\n")
+lines.append("| Open Excel, VLOOKUP everything | Ask Claude a question |\n")
+lines.append("| Spend 3 hours building analysis | Get your answer |\n")
+lines.append("| Repeat next month | Ask a follow-up |\n\n")
+lines.append("> *'Which keywords am I paying for that I already rank for organically?'*\n")
+lines.append("> Answered in 90 seconds instead of an afternoon.\n\n")
+lines.append("---\n\n")
+lines.append("## What you can ask\n\n")
+lines.append("**Find wasted ad spend**\n")
+lines.append("```\nCompare GSC rankings against Ads search terms.\nFind every keyword where we're paying for clicks but already rank positions 1-5 organically.\n```\n\n")
+lines.append("**Find quick ranking wins**\n")
+lines.append("```\nWhich queries are stuck on page 2 with over 500 impressions?\n```\n\n")
+lines.append("**Find content gaps**\n")
+lines.append("```\nWhich paid search terms have zero organic presence? These are topics we should be writing about.\n```\n\n")
+lines.append("**Fix high-bounce pages**\n")
+lines.append("```\nWhich pages rank well in GSC but have high bounce rates in GA4?\n```\n\n")
+lines.append("**Track AI visibility**\n")
+lines.append("```\nAre our pages being cited in Google AI Overviews or Copilot?\n```\n\n")
+lines.append("**Generate client reports**\n")
+lines.append("```\nWrite a full monthly SEO report. Save to reports/ as markdown.\n```\n\n")
+lines.append("**Connect lead data**\n")
+lines.append("```\nWhich organic keywords drove the most form submissions this month?\n```\n\n")
+lines.append("---\n\n")
+lines.append("## Real results\n\n")
+lines.append("When run for a higher education client it found:\n\n")
+lines.append("- **2,742** search terms with wasted ad spend\n")
+lines.append("- **351** opportunities to reduce paid spend where organic was already strong\n")
+lines.append("- **33** organic queries that paid could amplify\n")
+lines.append("- **41** content gaps where paid was the only presence\n\n")
+lines.append("That analysis took **90 seconds**. The manual equivalent takes **most of an afternoon**.\n\n")
+lines.append("---\n\n")
+lines.append("## What it connects\n\n")
+lines.append("| Source | What you get |\n")
+lines.append("|--------|--------------|\n")
+lines.append("| Google Search Console | Queries, pages, clicks, impressions, CTR, position |\n")
+lines.append("| Google Analytics 4 | Sessions, bounce rates, conversions by channel |\n")
+lines.append("| Google Ads | Search terms, spend, conversions, impression share |\n")
+lines.append("| Google Forms | Lead data - connect traffic to actual enquiries |\n")
+lines.append("| AI Visibility | Citations in ChatGPT, Copilot, Perplexity, AI Overviews |\n\n")
+lines.append("---\n\n")
+lines.append("## Setup\n\n")
+lines.append("### 1. Clone\n```bash\ngit clone https://github.com/kenneththapelo29/SEO-Command-Centre-.git\ncd SEO-Command-Centre-\n```\n\n")
+lines.append("### 2. Install\n```bash\npip install -r requirements.txt\n```\n\n")
+lines.append("### 3. Google Cloud\n\n")
+lines.append("1. Create a project at https://console.cloud.google.com\n")
+lines.append("2. Enable Search Console API and Google Analytics Data API\n")
+lines.append("3. Create a service account and download the JSON key\n")
+lines.append("4. Save key as `service-account-key.json` in project root\n")
+lines.append("5. Add service account email to your GSC and GA4 properties\n\n")
+lines.append("### 4. Configure\n\n")
+lines.append("Edit `config.json` with your site details.\n\n")
+lines.append("### 5. Fetch and ask\n\n")
+lines.append("```bash\npython run_fetch.py --sources gsc,ga4\n```\n\n")
+lines.append("Open Claude Code in this directory. See `CLAUDE.md` for the full prompt library.\n\n")
+lines.append("---\n\n")
+lines.append("## Google Ads (optional)\n\n")
+lines.append("```bash\npython scripts/setup_auth.py\n```\n\n")
+lines.append("Requires a developer token from Google Ads API Center. Approval: 24-48 hours.\n\n")
+lines.append("---\n\n")
+lines.append("## AI Visibility\n\n")
+lines.append("| Source | Cost | Tracks |\n")
+lines.append("|--------|------|--------|\n")
+lines.append("| Bing Webmaster Tools | Free | Copilot citations |\n")
+lines.append("| DataForSEO | ~$0.01/query | Google AI Overviews |\n")
+lines.append("| SerpApi | $75/mo | Full SERP + AI Overviews |\n")
+lines.append("| Direct LLM calls | <$20/mo | ChatGPT, Claude, Perplexity |\n\n")
+lines.append("---\n\n")
+lines.append("## Notes\n\n")
+lines.append("- `service-account-key.json` is in `.gitignore` - never commit it\n")
+lines.append("- Verify Claude outputs against source JSON before sending to clients\n")
+lines.append("- AI citation data is directional - useful for trends, not precise counts\n")
+lines.append("- Complements (not replaces) tools like Semrush/Ahrefs\n\n")
+lines.append("---\n\n")
+lines.append("**Built to eliminate the spreadsheet grind. Point it at any site. Start asking questions.**\n")
+open(path, "w").write("".join(lines))
+print("Done")
+EOF
