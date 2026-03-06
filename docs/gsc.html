@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Google Search Console — SEO Command Center</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Courier New',monospace;background:#0a0a0f;color:#e0e0e8;display:flex;min-height:100vh}
+a{color:#4ade80;text-decoration:none}
+nav{width:240px;border-right:1px solid #1e1e2e;padding:24px 0;position:fixed;height:100vh;overflow-y:auto;background:#0d0d14;flex-shrink:0}
+.nav-logo{padding:0 20px 24px;border-bottom:1px solid #1e1e2e;margin-bottom:16px}
+.nav-logo h2{font-size:14px;color:#f0f0f8}
+.nav-logo span{font-size:11px;color:#555}
+.nav-section{padding:8px 20px;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#444;margin-top:8px}
+.nav-link{display:block;padding:7px 20px;font-size:12px;color:#666;border-left:2px solid transparent;transition:all .15s}
+.nav-link:hover,.nav-link.active{color:#e0e0e8;border-left-color:#4ade80;background:#12121a}
+main{margin-left:240px;flex:1;padding:48px;max-width:860px}
+h1{font-size:2rem;color:#f0f0f8;margin-bottom:8px;letter-spacing:-.02em}
+.page-sub{color:#555;font-size:14px;margin-bottom:40px;padding-bottom:24px;border-bottom:1px solid #1e1e2e}
+h2{font-size:1.3rem;color:#f0f0f8;margin:40px 0 12px}
+h3{font-size:1rem;color:#ccc;margin:20px 0 8px}
+p{font-size:14px;color:#888;line-height:1.7;margin-bottom:16px}
+code{background:#1e1e2e;padding:2px 8px;border-radius:3px;font-size:12px;color:#4ade80;font-family:inherit}
+pre{background:#0d0d14;border:1px solid #1e1e2e;border-left:3px solid #4ade80;border-radius:6px;padding:16px 20px;margin:16px 0;overflow-x:auto}
+pre code{background:none;padding:0;font-size:12px;color:#4ade80}
+.info{background:#0a0f1a;border:1px solid #1e2e3e;border-left:3px solid #60a5fa;border-radius:4px;padding:12px 16px;margin:16px 0;font-size:13px;color:#7ab0e0}
+.warn{background:#0f0f0a;border:1px solid #3e3e1e;border-left:3px solid #facc15;border-radius:4px;padding:12px 16px;margin:16px 0;font-size:13px;color:#c0b060}
+.success{background:#0a0f0a;border:1px solid #1e3e1e;border-left:3px solid #4ade80;border-radius:4px;padding:12px 16px;margin:16px 0;font-size:13px;color:#60a060}
+table{width:100%;border-collapse:collapse;margin:16px 0;font-size:13px}
+th{text-align:left;padding:8px 12px;border-bottom:1px solid #1e1e2e;color:#555;font-size:11px;text-transform:uppercase;letter-spacing:.08em}
+td{padding:10px 12px;border-bottom:1px solid #12121a;color:#888}
+td:first-child{color:#ccc}
+@media(max-width:700px){nav{display:none}main{margin-left:0;padding:24px}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-logo"><h2>SEO Command Center</h2><span>Documentation</span></div>
+  <div class="nav-section">Getting Started</div>
+  <a class="nav-link" href="index.html">Overview</a>
+  <a class="nav-link" href="installation.html">Installation</a>
+  <a class="nav-link" href="configuration.html">Configuration</a>
+  <div class="nav-section">Data Sources</div>
+  <a class="nav-link" href="gsc.html">Google Search Console</a>
+  <a class="nav-link" href="ga4.html">Google Analytics 4</a>
+  <a class="nav-link" href="ads.html">Google Ads</a>
+  <a class="nav-link" href="forms.html">Google Forms</a>
+  <a class="nav-link" href="ai-visibility.html">AI Visibility</a>
+  <div class="nav-section">Analysis</div>
+  <a class="nav-link" href="prompts.html">Prompt Library</a>
+  <a class="nav-link" href="reports.html">Generating Reports</a>
+</nav>
+<main>
+  <h1>Google Search Console</h1>
+  <p class="page-sub">Pull query and page performance data from GSC.</p>
+  
+<h2>What gets fetched</h2>
+<table>
+<tr><th>File</th><th>Contents</th></tr>
+<tr><td>data/gsc/queries.json</td><td>Top 1000 queries by clicks with impressions, CTR, position</td></tr>
+<tr><td>data/gsc/pages.json</td><td>Top pages by impressions with same metrics</td></tr>
+</table>
+<h2>Authentication</h2>
+<p>Uses the Google Cloud service account. Requires Read access on the GSC property.</p>
+<p>Add the service account email in Search Console: Settings → Users and permissions → Add user.</p>
+<h2>Fetch</h2>
+<pre><code>python run_fetch.py --sources gsc</code></pre>
+<h2>Data covers</h2>
+<p>Last 90 days by default. GSC has approximately a 3 day data lag. Data is sampled for very high volume sites.</p>
+<div class="info">GSC click counts are sampled. Treat them as directional rather than exact.</div>
+
+</main>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Generating Reports — SEO Command Center</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Courier New',monospace;background:#0a0a0f;color:#e0e0e8;display:flex;min-height:100vh}
+a{color:#4ade80;text-decoration:none}
+nav{width:240px;border-right:1px solid #1e1e2e;padding:24px 0;position:fixed;height:100vh;overflow-y:auto;background:#0d0d14;flex-shrink:0}
+.nav-logo{padding:0 20px 24px;border-bottom:1px solid #1e1e2e;margin-bottom:16px}
+.nav-logo h2{font-size:14px;color:#f0f0f8}
+.nav-logo span{font-size:11px;color:#555}
+.nav-section{padding:8px 20px;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#444;margin-top:8px}
+.nav-link{display:block;padding:7px 20px;font-size:12px;color:#666;border-left:2px solid transparent;transition:all .15s}
+.nav-link:hover,.nav-link.active{color:#e0e0e8;border-left-color:#4ade80;background:#12121a}
+main{margin-left:240px;flex:1;padding:48px;max-width:860px}
+h1{font-size:2rem;color:#f0f0f8;margin-bottom:8px;letter-spacing:-.02em}
+.page-sub{color:#555;font-size:14px;margin-bottom:40px;padding-bottom:24px;border-bottom:1px solid #1e1e2e}
+h2{font-size:1.3rem;color:#f0f0f8;margin:40px 0 12px}
+h3{font-size:1rem;color:#ccc;margin:20px 0 8px}
+p{font-size:14px;color:#888;line-height:1.7;margin-bottom:16px}
+code{background:#1e1e2e;padding:2px 8px;border-radius:3px;font-size:12px;color:#4ade80;font-family:inherit}
+pre{background:#0d0d14;border:1px solid #1e1e2e;border-left:3px solid #4ade80;border-radius:6px;padding:16px 20px;margin:16px 0;overflow-x:auto}
+pre code{background:none;padding:0;font-size:12px;color:#4ade80}
+.info{background:#0a0f1a;border:1px solid #1e2e3e;border-left:3px solid #60a5fa;border-radius:4px;padding:12px 16px;margin:16px 0;font-size:13px;color:#7ab0e0}
+.warn{background:#0f0f0a;border:1px solid #3e3e1e;border-left:3px solid #facc15;border-radius:4px;padding:12px 16px;margin:16px 0;font-size:13px;color:#c0b060}
+.success{background:#0a0f0a;border:1px solid #1e3e1e;border-left:3px solid #4ade80;border-radius:4px;padding:12px 16px;margin:16px 0;font-size:13px;color:#60a060}
+table{width:100%;border-collapse:collapse;margin:16px 0;font-size:13px}
+th{text-align:left;padding:8px 12px;border-bottom:1px solid #1e1e2e;color:#555;font-size:11px;text-transform:uppercase;letter-spacing:.08em}
+td{padding:10px 12px;border-bottom:1px solid #12121a;color:#888}
+td:first-child{color:#ccc}
+@media(max-width:700px){nav{display:none}main{margin-left:0;padding:24px}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-logo"><h2>SEO Command Center</h2><span>Documentation</span></div>
+  <div class="nav-section">Getting Started</div>
+  <a class="nav-link" href="index.html">Overview</a>
+  <a class="nav-link" href="installation.html">Installation</a>
+  <a class="nav-link" href="configuration.html">Configuration</a>
+  <div class="nav-section">Data Sources</div>
+  <a class="nav-link" href="gsc.html">Google Search Console</a>
+  <a class="nav-link" href="ga4.html">Google Analytics 4</a>
+  <a class="nav-link" href="ads.html">Google Ads</a>
+  <a class="nav-link" href="forms.html">Google Forms</a>
+  <a class="nav-link" href="ai-visibility.html">AI Visibility</a>
+  <div class="nav-section">Analysis</div>
+  <a class="nav-link" href="prompts.html">Prompt Library</a>
+  <a class="nav-link" href="reports.html">Generating Reports</a>
+</nav>
+<main>
+  <h1>Generating Reports</h1>
+  <p class="page-sub">Turn your data into client-ready reports.</p>
+  
+<h2>Markdown reports</h2>
+<p>Ask Claude Code to write a report and save it to the reports/ folder:</p>
+<pre><code>Write a full monthly SEO report from all data sources.
+Save it to reports/report-2026-03.md</code></pre>
+<p>The report will be saved as a markdown file you can open in any editor or convert to PDF.</p>
+<h2>CSV output</h2>
+<p>Ask Claude Code to generate a CSV for any analysis:</p>
+<pre><code>Turn the paid-organic gap analysis into a CSV
+I can send to the client.</code></pre>
+<h2>Google Docs output</h2>
+<p>Claude Code can generate properly formatted markdown that you paste into Google Docs. For automatic conversion, consider adding a google-docs-forge integration.</p>
+<h2>Verify before sending</h2>
+<p>Always spot-check Claude Code outputs against the source JSON files before sending to a client. LLMs can occasionally misread data. If a number looks surprising, check the raw file.</p>
+<div class="warn">Trust but verify. Check surprising numbers against source JSON before anything goes to a client.</div>
+
+</main>
+</body>
+</html>

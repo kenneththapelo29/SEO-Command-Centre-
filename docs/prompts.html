@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prompt Library — SEO Command Center</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Courier New',monospace;background:#0a0a0f;color:#e0e0e8;display:flex;min-height:100vh}
+a{color:#4ade80;text-decoration:none}
+nav{width:240px;border-right:1px solid #1e1e2e;padding:24px 0;position:fixed;height:100vh;overflow-y:auto;background:#0d0d14;flex-shrink:0}
+.nav-logo{padding:0 20px 24px;border-bottom:1px solid #1e1e2e;margin-bottom:16px}
+.nav-logo h2{font-size:14px;color:#f0f0f8}
+.nav-logo span{font-size:11px;color:#555}
+.nav-section{padding:8px 20px;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#444;margin-top:8px}
+.nav-link{display:block;padding:7px 20px;font-size:12px;color:#666;border-left:2px solid transparent;transition:all .15s}
+.nav-link:hover,.nav-link.active{color:#e0e0e8;border-left-color:#4ade80;background:#12121a}
+main{margin-left:240px;flex:1;padding:48px;max-width:860px}
+h1{font-size:2rem;color:#f0f0f8;margin-bottom:8px;letter-spacing:-.02em}
+.page-sub{color:#555;font-size:14px;margin-bottom:40px;padding-bottom:24px;border-bottom:1px solid #1e1e2e}
+h2{font-size:1.3rem;color:#f0f0f8;margin:40px 0 12px;letter-spacing:-.01em}
+p{font-size:14px;color:#888;line-height:1.7;margin-bottom:16px}
+code{background:#1e1e2e;padding:2px 8px;border-radius:3px;font-size:12px;color:#4ade80;font-family:inherit}
+.prompt-card{background:#0d0d14;border:1px solid #1e1e2e;border-radius:8px;margin-bottom:20px;overflow:hidden}
+.prompt-header{padding:14px 20px;border-bottom:1px solid #1e1e2e;display:flex;align-items:center;justify-content:space-between}
+.prompt-title{font-size:14px;color:#f0f0f8;font-weight:600}
+.prompt-tag{font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:3px}
+.tag-ads{background:#facc1522;color:#facc15;border:1px solid #facc1544}
+.tag-gsc{background:#4ade8022;color:#4ade80;border:1px solid #4ade8044}
+.tag-ga4{background:#60a5fa22;color:#60a5fa;border:1px solid #60a5fa44}
+.tag-forms{background:#f472b622;color:#f472b6;border:1px solid #f472b644}
+.tag-ai{background:#a78bfa22;color:#a78bfa;border:1px solid #a78bfa44}
+.tag-report{background:#fb923c22;color:#fb923c;border:1px solid #fb923c44}
+.prompt-body{padding:16px 20px}
+.prompt-desc{font-size:13px;color:#666;margin-bottom:12px}
+.prompt-text{background:#08080f;border:1px solid #1a1a2a;border-left:3px solid #4ade80;border-radius:4px;padding:14px 16px;font-size:12px;color:#aaa;line-height:1.6;white-space:pre-wrap}
+.tip{background:#0a0f0a;border:1px solid #1e3e1e;border-radius:4px;padding:10px 14px;font-size:12px;color:#4a8a4a;margin-top:10px}
+.info{background:#0a0f1a;border:1px solid #1e2e3e;border-left:3px solid #60a5fa;border-radius:4px;padding:12px 16px;margin:16px 0;font-size:13px;color:#7ab0e0}
+@media(max-width:700px){nav{display:none}main{margin-left:0;padding:24px}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-logo"><h2>SEO Command Center</h2><span>Documentation</span></div>
+  <div class="nav-section">Getting Started</div>
+  <a class="nav-link" href="index.html">Overview</a>
+  <a class="nav-link" href="installation.html">Installation</a>
+  <a class="nav-link" href="configuration.html">Configuration</a>
+  <div class="nav-section">Data Sources</div>
+  <a class="nav-link" href="gsc.html">Google Search Console</a>
+  <a class="nav-link" href="ga4.html">Google Analytics 4</a>
+  <a class="nav-link" href="ads.html">Google Ads</a>
+  <a class="nav-link" href="forms.html">Google Forms</a>
+  <a class="nav-link" href="ai-visibility.html">AI Visibility</a>
+  <div class="nav-section">Analysis</div>
+  <a class="nav-link active" href="prompts.html">Prompt Library</a>
+  <a class="nav-link" href="reports.html">Generating Reports</a>
+</nav>
+<main>
+  <h1>Prompt Library</h1>
+  <p class="page-sub">Copy and paste these into Claude Code after fetching your data. Each one is ready to use.</p>
+
+  <div class="info">Open Claude Code in your project directory. It reads CLAUDE.md automatically. These prompts work best when data has been fetched within the last 30 days.</div>
+
+  <h2>Paid vs Organic</h2>
+
+  <div class="prompt-card">
+    <div class="prompt-header">
+      <span class="prompt-title">💰 Find wasted ad spend</span>
+      <span class="prompt-tag tag-ads">GSC + Ads</span>
+    </div>
+    <div class="prompt-body">
+      <p class="prompt-desc">The highest-value analysis. Finds every keyword where you are paying for clicks you could get for free.</p>
+      <div class="prompt-text">Compare data/gsc/queries.json against data/ads/search_terms.json.
+
+Find keywords where we are paying for ad clicks but already rank in positions 1-5 organically. These are candidates to pause or reduce paid spend.
+
+Also find keywords where we are spending on ads with zero organic presence. Those are content gaps we should be writing about.
+
+Output a prioritised table for each category sorted by spend.</div>
+      <div class="tip">💡 Run this first. It almost always finds immediate savings.</div>
+    </div>
+  </div>
+
+  <div class="prompt-card">
+    <div class="prompt-header">
+      <span class="prompt-title">📈 Paid amplification candidates</span>
+      <span class="prompt-tag tag-ads">GSC + Ads</span>
+    </div>
+    <div class="prompt-body">
+      <p class="prompt-desc">Find organic winners that paid could amplify for even more visibility.</p>
+      <div class="prompt-text">Read data/gsc/queries.json and data/ads/search_terms.json.
+
+Find the top 20 organic queries by impression volume that we are not currently running ads against. These are amplification candidates where paid support would compound our organic presence.</div>
+    </div>
+  </div>
+
+  <h2>Ranking Opportunities</h2>
+
+  <div class="prompt-card">
+    <div class="prompt-header">
+      <span class="prompt-title">🎯 Page 2 to page 1 quick wins</span>
+      <span class="prompt-tag tag-gsc">GSC</span>
+    </div>
+    <div class="prompt-body">
+      <p class="prompt-desc">Queries on the edge of page 1. A content refresh could move them up.</p>
+      <div class="prompt-text">Read data/gsc/queries.json.
+
+Find queries with average position between 8 and 20 and impressions over 500. These are our easiest ranking wins. Sort by impression volume and show current CTR alongside position.</div>
+      <div class="tip">💡 Position 8-12 queries are often one content update away from page 1.</div>
+    </div>
+  </div>
+
+  <div class="prompt-card">
+    <div class="prompt-header">
+      <span class="prompt-title">📊 Topic cluster analysis</span>
+      <span class="prompt-tag tag-gsc">GSC</span>
+    </div>
+    <div class="prompt-body">
+      <p class="prompt-desc">Group all queries by topic to find where to invest in content.</p>
+      <div class="prompt-text">Read data/gsc/queries.json.
+
+Group all queries into topic clusters based on semantic similarity and intent. For each cluster show total impressions, average position and top 3 queries. Which clusters have the most traffic potential but worst average position?</div>
+    </div>
+  </div>
+
+  <h2>Content and UX</h2>
+
+  <div class="prompt-card">
+    <div class="prompt-header">
+      <span class="prompt-title">📉 Low CTR high impression pages</span>
+      <span class="prompt-tag tag-gsc">GSC</span>
+    </div>
+    <div class="prompt-body">
+      <p class="prompt-desc">Pages that show in search but don't get clicked. Title or meta description problem.</p>
+      <div class="prompt-text">Read data/gsc/queries.json.
+
+Find queries in positions 1-10 with over 500 impressions but CTR below 3 percent. These pages are showing but not getting clicked. Rank by impression volume. These need title tag or meta description improvements.</div>
+    </div>
+  </div>
+
+  <div class="prompt-card">
+    <div class="prompt-header">
+      <span class="prompt-title">⚠️ High bounce organic pages</span>
+      <span class="prompt-tag tag-ga4">GSC + GA4</span>
+    </div>
+    <div class="prompt-body">
+      <p class="prompt-desc">Pages that rank but disappoint. Visitors arrive and leave immediately.</p>
+      <div class="prompt-text">Read data/ga4/channel_traffic.json and data/gsc/pages.json.
+
+Find pages that rank in GSC positions 1-10 but have bounce rates above 70 percent in GA4. Sort by traffic volume multiplied by bounce rate. These pages need content improvement or better UX.</div>
+    </div>
+  </div>
+
+  <h2>Lead and Conversion Analysis</h2>
+
+  <div class="prompt-card">
+    <div class="prompt-header">
+      <span class="prompt-title">💬 Lead source analysis</span>
+      <span class="prompt-tag tag-forms">GSC + Forms</span>
+    </div>
+    <div class="prompt-body">
+      <p class="prompt-desc">Connect your traffic to actual leads. Requires Google Forms fetcher.</p>
+      <div class="prompt-text">Read data/forms/all_leads.json and data/gsc/queries.json.
+
+Which organic keywords are driving the most form submissions? Cross-reference by page URL. Which pages convert traffic into leads and which do not?</div>
+    </div>
+  </div>
+
+  <div class="prompt-card">
+    <div class="prompt-header">
+      <span class="prompt-title">💰 Cost per lead</span>
+      <span class="prompt-tag tag-forms">Ads + Forms</span>
+    </div>
+    <div class="prompt-body">
+      <p class="prompt-desc">The real ROI question. What does each lead actually cost?</p>
+      <div class="prompt-text">Read data/forms/all_leads.json and data/ads/search_terms.json.
+
+Calculate cost per lead from paid traffic. Which campaigns are generating leads versus burning budget? Compare paid cost per lead against organic cost per lead.</div>
+    </div>
+  </div>
+
+  <h2>AI Visibility</h2>
+
+  <div class="prompt-card">
+    <div class="prompt-header">
+      <span class="prompt-title">🤖 AI citation analysis</span>
+      <span class="prompt-tag tag-ai">AI + GSC</span>
+    </div>
+    <div class="prompt-body">
+      <p class="prompt-desc">Are you showing up in AI search? Are your pages competing against each other?</p>
+      <div class="prompt-text">Read data/ai-visibility/bing_copilot.json and data/gsc/pages.json.
+
+Which pages are being cited in AI responses? Are any pages competing for the same AI citations on the same topics? Flag cannibalization risks. Show citation count alongside GSC position and click volume.</div>
+    </div>
+  </div>
+
+  <h2>Reports</h2>
+
+  <div class="prompt-card">
+    <div class="prompt-header">
+      <span class="prompt-title">📋 Full monthly SEO report</span>
+      <span class="prompt-tag tag-report">All sources</span>
+    </div>
+    <div class="prompt-body">
+      <p class="prompt-desc">One prompt. Complete client-ready report.</p>
+      <div class="prompt-text">Read all JSON files in data/gsc/, data/ga4/, data/ads/, data/forms/ and data/ai-visibility/. Also read config.json for client context.
+
+Write a comprehensive SEO report with these sections:
+1. Executive Summary — 3 to 5 bullet points, most important findings
+2. Organic Performance — top queries, top pages
+3. Paid vs Organic Overlap — gap analysis summary
+4. Content Opportunities — quick wins, topic gaps, high bounce pages
+5. Lead Performance — form submissions by source
+6. AI Visibility — citation presence and cannibalization risks
+7. Recommended Actions — prioritised list, maximum 10 items
+
+Save the report to reports/report-YYYY-MM-DD.md</div>
+      <div class="tip">💡 Always verify numbers against source JSON before sending to a client.</div>
+    </div>
+  </div>
+
+</main>
+</body>
+</html>

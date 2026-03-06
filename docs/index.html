@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Docs — SEO Command Center</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Courier New',monospace;background:#0a0a0f;color:#e0e0e8;display:flex;min-height:100vh}
+a{color:#4ade80;text-decoration:none}
+nav{width:240px;border-right:1px solid #1e1e2e;padding:24px 0;position:fixed;height:100vh;overflow-y:auto;background:#0d0d14;flex-shrink:0}
+.nav-logo{padding:0 20px 24px;border-bottom:1px solid #1e1e2e;margin-bottom:16px}
+.nav-logo h2{font-size:14px;color:#f0f0f8}
+.nav-logo span{font-size:11px;color:#555}
+.nav-section{padding:8px 20px;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#444;margin-top:8px}
+.nav-link{display:block;padding:7px 20px;font-size:12px;color:#666;border-left:2px solid transparent;transition:all .15s}
+.nav-link:hover,.nav-link.active{color:#e0e0e8;border-left-color:#4ade80;background:#12121a}
+main{margin-left:240px;flex:1;padding:48px;max-width:860px}
+h1{font-size:2rem;color:#f0f0f8;margin-bottom:8px;letter-spacing:-.02em}
+.page-sub{color:#555;font-size:14px;margin-bottom:40px;padding-bottom:24px;border-bottom:1px solid #1e1e2e}
+h2{font-size:1.3rem;color:#f0f0f8;margin:40px 0 12px;letter-spacing:-.01em}
+h3{font-size:1rem;color:#ccc;margin:24px 0 8px}
+p{font-size:14px;color:#888;line-height:1.7;margin-bottom:16px}
+code{background:#1e1e2e;padding:2px 8px;border-radius:3px;font-size:12px;color:#4ade80;font-family:inherit}
+pre{background:#0d0d14;border:1px solid #1e1e2e;border-left:3px solid #4ade80;border-radius:6px;padding:16px 20px;margin:16px 0;overflow-x:auto}
+pre code{background:none;padding:0;font-size:12px;color:#4ade80}
+.info{background:#0a0f1a;border:1px solid #1e2e3e;border-left:3px solid #60a5fa;border-radius:4px;padding:12px 16px;margin:16px 0;font-size:13px;color:#7ab0e0}
+.warn{background:#0f0f0a;border:1px solid #3e3e1e;border-left:3px solid #facc15;border-radius:4px;padding:12px 16px;margin:16px 0;font-size:13px;color:#c0b060}
+.success{background:#0a0f0a;border:1px solid #1e3e1e;border-left:3px solid #4ade80;border-radius:4px;padding:12px 16px;margin:16px 0;font-size:13px;color:#60a060}
+table{width:100%;border-collapse:collapse;margin:16px 0;font-size:13px}
+th{text-align:left;padding:8px 12px;border-bottom:1px solid #1e1e2e;color:#555;font-size:11px;text-transform:uppercase;letter-spacing:.08em}
+td{padding:10px 12px;border-bottom:1px solid #12121a;color:#888}
+td:first-child{color:#ccc}
+.step{display:flex;gap:16px;margin-bottom:24px}
+.step-num{width:28px;height:28px;border-radius:50%;border:1.5px solid #4ade8066;display:flex;align-items:center;justify-content:center;font-size:12px;color:#4ade80;flex-shrink:0;margin-top:2px}
+.step-body h3{margin-top:0;font-size:14px;color:#e0e0e8}
+.step-body p{margin-bottom:0}
+@media(max-width:700px){nav{display:none}main{margin-left:0;padding:24px}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-logo"><h2>SEO Command Center</h2><span>Documentation</span></div>
+  <div class="nav-section">Getting Started</div>
+  <a class="nav-link active" href="index.html">Overview</a>
+  <a class="nav-link" href="installation.html">Installation</a>
+  <a class="nav-link" href="configuration.html">Configuration</a>
+  <div class="nav-section">Data Sources</div>
+  <a class="nav-link" href="gsc.html">Google Search Console</a>
+  <a class="nav-link" href="ga4.html">Google Analytics 4</a>
+  <a class="nav-link" href="ads.html">Google Ads</a>
+  <a class="nav-link" href="forms.html">Google Forms</a>
+  <a class="nav-link" href="ai-visibility.html">AI Visibility</a>
+  <div class="nav-section">Analysis</div>
+  <a class="nav-link" href="prompts.html">Prompt Library</a>
+  <a class="nav-link" href="reports.html">Generating Reports</a>
+</nav>
+<main>
+  <h1>SEO Command Center</h1>
+  <p class="page-sub">Claude Code-powered SEO analysis. Connect your Google APIs. Ask questions. Get answers.</p>
+
+  <h2>What is this?</h2>
+  <p>SEO Command Center is a Python toolkit that pulls live data from Google Search Console, GA4, Google Ads, Google Forms and AI visibility platforms into local JSON files — then lets Claude Code read and cross-reference everything at once.</p>
+  <p>Instead of exporting CSVs from three different platforms, VLOOKUPing them together in Excel and spending an afternoon on analysis, you run one command and ask questions in plain English.</p>
+
+  <div class="success">
+    "Which keywords am I paying for that I already rank for organically?" — answered in 90 seconds instead of an afternoon.
+  </div>
+
+  <h2>How it works</h2>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><h3>Connect your APIs</h3><p>One-time setup (~1 hour). Create a Google Cloud service account and grant it read access to your GSC and GA4 properties.</p></div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><h3>Fetch your data</h3><p>Run <code>python run_fetch.py --sources gsc,ga4,ads,forms,ai</code>. Data lands in JSON files in your project directory.</p></div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><h3>Ask Claude Code anything</h3><p>Open Claude Code in the project directory. It reads CLAUDE.md automatically which contains your full prompt library. Ask questions — each one builds on the last.</p></div></div>
+
+  <h2>What it connects</h2>
+  <table>
+    <tr><th>Source</th><th>What you get</th><th>Setup time</th></tr>
+    <tr><td>Google Search Console</td><td>Queries, pages, clicks, impressions, CTR, position</td><td>15 min</td></tr>
+    <tr><td>Google Analytics 4</td><td>Sessions, bounce rates, conversions by channel</td><td>5 min</td></tr>
+    <tr><td>Google Ads</td><td>Search terms, spend, conversions, impression share</td><td>30 min</td></tr>
+    <tr><td>Google Forms</td><td>Lead data — connect traffic to actual enquiries</td><td>10 min</td></tr>
+    <tr><td>AI Visibility</td><td>Citations in ChatGPT, Copilot, Perplexity, AI Overviews</td><td>10 min</td></tr>
+  </table>
+
+  <h2>Quick start</h2>
+  <pre><code>git clone https://github.com/kenneththapelo29/SEO-Command-Centre-.git
+cd SEO-Command-Centre-
+pip install -r requirements.txt</code></pre>
+  <p>Then follow the <a href="installation.html">Installation guide</a> to connect your APIs.</p>
+
+  <div class="info">New to this? Start with GSC only — it is the easiest API to connect and gives you immediate value. Add GA4, Ads and Forms once that is working.</div>
+
+  <h2>Project structure</h2>
+  <pre><code>seo-command-center/
+├── config.json          # Your site details and API property IDs
+├── run_fetch.py         # Master fetch runner
+├── requirements.txt     # Python dependencies
+├── CLAUDE.md            # Prompt library for Claude Code
+├── fetchers/
+│   ├── fetch_gsc.py
+│   ├── fetch_ga4.py
+│   ├── fetch_ads.py
+│   ├── fetch_forms.py
+│   └── fetch_ai_visibility.py
+├── data/                # Fetched JSON files (gitignored)
+├── reports/             # Generated reports (gitignored)
+└── scripts/
+    └── setup_auth.py    # Google Ads OAuth helper</code></pre>
+</main>
+</body>
+</html>

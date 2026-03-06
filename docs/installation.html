@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Installation — SEO Command Center</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Courier New',monospace;background:#0a0a0f;color:#e0e0e8;display:flex;min-height:100vh}
+a{color:#4ade80;text-decoration:none}
+nav{width:240px;border-right:1px solid #1e1e2e;padding:24px 0;position:fixed;height:100vh;overflow-y:auto;background:#0d0d14;flex-shrink:0}
+.nav-logo{padding:0 20px 24px;border-bottom:1px solid #1e1e2e;margin-bottom:16px}
+.nav-logo h2{font-size:14px;color:#f0f0f8}
+.nav-logo span{font-size:11px;color:#555}
+.nav-section{padding:8px 20px;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#444;margin-top:8px}
+.nav-link{display:block;padding:7px 20px;font-size:12px;color:#666;border-left:2px solid transparent;transition:all .15s}
+.nav-link:hover,.nav-link.active{color:#e0e0e8;border-left-color:#4ade80;background:#12121a}
+main{margin-left:240px;flex:1;padding:48px;max-width:860px}
+h1{font-size:2rem;color:#f0f0f8;margin-bottom:8px;letter-spacing:-.02em}
+.page-sub{color:#555;font-size:14px;margin-bottom:40px;padding-bottom:24px;border-bottom:1px solid #1e1e2e}
+h2{font-size:1.3rem;color:#f0f0f8;margin:40px 0 12px;letter-spacing:-.01em}
+h3{font-size:1rem;color:#ccc;margin:24px 0 8px}
+p{font-size:14px;color:#888;line-height:1.7;margin-bottom:16px}
+code{background:#1e1e2e;padding:2px 8px;border-radius:3px;font-size:12px;color:#4ade80;font-family:inherit}
+pre{background:#0d0d14;border:1px solid #1e1e2e;border-left:3px solid #4ade80;border-radius:6px;padding:16px 20px;margin:16px 0;overflow-x:auto}
+pre code{background:none;padding:0;font-size:12px;color:#4ade80}
+.info{background:#0a0f1a;border:1px solid #1e2e3e;border-left:3px solid #60a5fa;border-radius:4px;padding:12px 16px;margin:16px 0;font-size:13px;color:#7ab0e0}
+.warn{background:#0f0f0a;border:1px solid #3e3e1e;border-left:3px solid #facc15;border-radius:4px;padding:12px 16px;margin:16px 0;font-size:13px;color:#c0b060}
+.success{background:#0a0f0a;border:1px solid #1e3e1e;border-left:3px solid #4ade80;border-radius:4px;padding:12px 16px;margin:16px 0;font-size:13px;color:#60a060}
+.step{display:flex;gap:16px;margin-bottom:28px}
+.step-num{width:28px;height:28px;border-radius:50%;border:1.5px solid #4ade8066;display:flex;align-items:center;justify-content:center;font-size:12px;color:#4ade80;flex-shrink:0;margin-top:2px}
+.step-body h3{margin-top:0;font-size:14px;color:#e0e0e8;margin-bottom:6px}
+.step-body p{margin-bottom:8px}
+@media(max-width:700px){nav{display:none}main{margin-left:0;padding:24px}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-logo"><h2>SEO Command Center</h2><span>Documentation</span></div>
+  <div class="nav-section">Getting Started</div>
+  <a class="nav-link" href="index.html">Overview</a>
+  <a class="nav-link active" href="installation.html">Installation</a>
+  <a class="nav-link" href="configuration.html">Configuration</a>
+  <div class="nav-section">Data Sources</div>
+  <a class="nav-link" href="gsc.html">Google Search Console</a>
+  <a class="nav-link" href="ga4.html">Google Analytics 4</a>
+  <a class="nav-link" href="ads.html">Google Ads</a>
+  <a class="nav-link" href="forms.html">Google Forms</a>
+  <a class="nav-link" href="ai-visibility.html">AI Visibility</a>
+  <div class="nav-section">Analysis</div>
+  <a class="nav-link" href="prompts.html">Prompt Library</a>
+  <a class="nav-link" href="reports.html">Generating Reports</a>
+</nav>
+<main>
+  <h1>Installation</h1>
+  <p class="page-sub">Get up and running in about an hour. Start with GSC only — add other sources once that works.</p>
+
+  <h2>Prerequisites</h2>
+  <p>You need Python 3.8 or later. Check your version:</p>
+  <pre><code>python3 --version</code></pre>
+  <div class="info">On Windows, use WSL (Windows Subsystem for Linux) for the smoothest experience.</div>
+
+  <h2>Step 1 — Clone the repo</h2>
+  <pre><code>git clone https://github.com/kenneththapelo29/SEO-Command-Centre-.git
+cd SEO-Command-Centre-</code></pre>
+
+  <h2>Step 2 — Install dependencies</h2>
+  <pre><code>pip install -r requirements.txt</code></pre>
+
+  <h2>Step 3 — Google Cloud project</h2>
+  <div class="step"><div class="step-num">1</div><div class="step-body"><h3>Create a project</h3><p>Go to <a href="https://console.cloud.google.com/projectcreate" target="_blank">console.cloud.google.com/projectcreate</a> and create a new project named <code>seo-command-center</code>.</p></div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-body"><h3>Enable APIs</h3><p>Go to the <a href="https://console.cloud.google.com/apis/library" target="_blank">API Library</a> and enable:</p><p>- <strong>Google Search Console API</strong></p><p>- <strong>Google Analytics Data API</strong></p></div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-body"><h3>Create a service account</h3><p>Go to <a href="https://console.cloud.google.com/iam-admin/serviceaccounts/create" target="_blank">IAM and Admin → Service Accounts → Create</a>.</p><p>Name: <code>seo-command-center</code>. Skip the optional permission steps.</p></div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-body"><h3>Download the key</h3><p>Click the service account → Keys tab → Add Key → Create new key → JSON. Save the downloaded file as <code>service-account-key.json</code> in the project root.</p></div></div>
+
+  <div class="warn">Never commit service-account-key.json to git. It is already in .gitignore but double-check before pushing.</div>
+
+  <h2>Step 4 — Grant property access</h2>
+  <p>Copy the service account email (looks like <code>seo-command-center@your-project.iam.gserviceaccount.com</code>).</p>
+  <p><strong>GSC:</strong> Search Console → Settings → Users and permissions → Add user → paste email → Full access.</p>
+  <p><strong>GA4:</strong> Analytics → Admin → Property access management → + → paste email → Viewer.</p>
+
+  <h2>Step 5 — Configure</h2>
+  <p>Edit <code>config.json</code> with your site details. See the <a href="configuration.html">Configuration guide</a> for all options.</p>
+
+  <h2>Step 6 — First fetch</h2>
+  <pre><code>python run_fetch.py --sources gsc,ga4</code></pre>
+  <p>You should see JSON files appear in <code>data/gsc/</code> and <code>data/ga4/</code>.</p>
+
+  <div class="success">If you see checkmarks and row counts — you are set up. Open Claude Code in the project directory and start asking questions.</div>
+
+  <h2>Common errors</h2>
+  <p><strong>"The caller does not have permission"</strong> — the service account email was not added to the GSC or GA4 property. Go back to Step 4.</p>
+  <p><strong>"File not found: service-account-key.json"</strong> — the key file is not in the project root directory. Move it there.</p>
+  <p><strong>"ModuleNotFoundError"</strong> — dependencies not installed. Run <code>pip install -r requirements.txt</code> again.</p>
+
+  <p style="margin-top:40px">Next: <a href="configuration.html">Configuration →</a></p>
+</main>
+</body>
+</html>
