@@ -1,0 +1,188 @@
+python3 << 'EOF'
+path = "/data/data/com.termux/files/home/seo-command-center/index.html"
+html = """<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SEO Command Center</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Courier New',monospace;background:#0a0a0f;color:#e0e0e8;line-height:1.6}
+a{color:#4ade80;text-decoration:none}
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 20px;border-bottom:1px solid #1e1e2e}
+.badge{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:#4ade80;border:1px solid #4ade8044;padding:4px 12px;border-radius:20px;margin-bottom:24px;display:inline-block}
+h1{font-size:clamp(2rem,6vw,4rem);font-weight:700;color:#f0f0f8;letter-spacing:-.03em;margin-bottom:16px;line-height:1.1}
+h1 span{color:#4ade80}
+.subtitle{font-size:clamp(1rem,2vw,1.3rem);color:#888;max-width:600px;margin:0 auto 40px}
+.cta-group{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+.cta-primary{background:#4ade80;color:#0a0a0f;padding:12px 28px;border-radius:6px;font-weight:700;font-family:inherit;font-size:14px}
+.cta-secondary{border:1px solid #333;color:#aaa;padding:12px 28px;border-radius:6px;font-family:inherit;font-size:14px}
+.terminal{background:#0d0d14;border:1px solid #1e1e2e;border-left:3px solid #4ade80;border-radius:8px;padding:20px 24px;margin:48px auto 0;max-width:600px;text-align:left}
+.terminal-line{color:#666;font-size:12px;margin-bottom:8px}
+.terminal-cmd{color:#4ade80;font-size:13px;margin-bottom:4px}
+.terminal-out{color:#aaa;font-size:12px;padding-left:16px}
+section{padding:80px 20px;max-width:900px;margin:0 auto}
+h2{font-size:clamp(1.5rem,3vw,2.2rem);color:#f0f0f8;margin-bottom:12px;letter-spacing:-.02em}
+.section-sub{color:#666;margin-bottom:48px;font-size:14px}
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:2px;border:1px solid #1e1e2e;border-radius:8px;overflow:hidden;margin-bottom:48px}
+.compare-col{padding:0}
+.compare-header{padding:14px 20px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:700}
+.compare-header.old{background:#1a0a0a;color:#ef4444}
+.compare-header.new{background:#0a1a0a;color:#4ade80}
+.compare-item{padding:12px 20px;font-size:13px;border-top:1px solid #1e1e2e}
+.compare-item.old{background:#110808;color:#888}
+.compare-item.new{background:#08110a;color:#ccc}
+.prompts{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-bottom:48px}
+.prompt-card{background:#0d0d14;border:1px solid #1e1e2e;border-radius:8px;padding:20px}
+.prompt-card h3{font-size:13px;color:#4ade80;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.prompt-card p{font-size:12px;color:#666;font-style:italic;line-height:1.5}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-bottom:48px}
+.stat{background:#0d0d14;border:1px solid #1e1e2e;border-radius:8px;padding:24px;text-align:center}
+.stat-number{font-size:2.5rem;font-weight:700;color:#4ade80;display:block}
+.stat-label{font-size:12px;color:#666;margin-top:4px}
+.sources{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-bottom:48px}
+.source{background:#0d0d14;border:1px solid #1e1e2e;border-radius:8px;padding:16px;text-align:center}
+.source-name{font-size:13px;color:#e0e0e8;font-weight:600;margin-bottom:4px}
+.source-desc{font-size:11px;color:#555}
+.steps{counter-reset:steps}
+.step{display:flex;gap:20px;margin-bottom:32px;align-items:flex-start}
+.step-num{width:32px;height:32px;border-radius:50%;border:1.5px solid #4ade8066;display:flex;align-items:center;justify-content:center;font-size:13px;color:#4ade80;flex-shrink:0;margin-top:2px}
+.step-content h3{font-size:15px;color:#f0f0f8;margin-bottom:6px}
+.step-content p{font-size:13px;color:#666;line-height:1.6}
+.step-content code{background:#1e1e2e;padding:2px 8px;border-radius:3px;font-size:12px;color:#4ade80}
+footer{border-top:1px solid #1e1e2e;padding:40px 20px;text-align:center;color:#444;font-size:12px}
+@media(max-width:600px){.compare{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <span class="badge">Claude Code + Google APIs</span>
+  <h1>Stop switching tabs.<br><span>Start asking questions.</span></h1>
+  <p class="subtitle">Connect Google Search Console, GA4, Ads and AI visibility data. Ask Claude anything. Get answers in seconds — not afternoons.</p>
+  <div class="cta-group">
+    <a class="cta-primary" href="https://github.com/kenneththapelo29/SEO-Command-Centre-">Get Started on GitHub</a>
+    <a class="cta-secondary" href="#what-you-can-ask">See What You Can Ask</a>
+  </div>
+  <div class="terminal">
+    <div class="terminal-line">$ python run_fetch.py --sources gsc,ga4,ads</div>
+    <div class="terminal-cmd">✓ Saved 1000 rows → data/gsc/queries.json</div>
+    <div class="terminal-cmd">✓ Saved 847 rows → data/ga4/top_pages.json</div>
+    <div class="terminal-cmd">✓ Saved 3241 rows → data/ads/search_terms.json</div>
+    <div class="terminal-line" style="margin-top:12px">// Open Claude Code and ask:</div>
+    <div class="terminal-out">"Which keywords am I paying for that I already rank for organically?"</div>
+    <div class="terminal-cmd" style="margin-top:8px">→ Answer in 90 seconds.</div>
+  </div>
+</div>
+
+<section>
+  <h2>The old way vs the new way</h2>
+  <p class="section-sub">Every SEO question used to mean the same painful afternoon.</p>
+  <div class="compare">
+    <div class="compare-col">
+      <div class="compare-header old">❌ The old way</div>
+      <div class="compare-item old">Export CSV from GSC</div>
+      <div class="compare-item old">Export CSV from GA4</div>
+      <div class="compare-item old">Export CSV from Ads</div>
+      <div class="compare-item old">Open Excel, VLOOKUP everything</div>
+      <div class="compare-item old">Spend 3 hours on analysis</div>
+      <div class="compare-item old">Repeat from scratch next month</div>
+    </div>
+    <div class="compare-col">
+      <div class="compare-header new">✅ With SEO Command Center</div>
+      <div class="compare-item new">Run one command</div>
+      <div class="compare-item new">Wait 30 seconds</div>
+      <div class="compare-item new">Ask Claude a question</div>
+      <div class="compare-item new">Get your answer</div>
+      <div class="compare-item new">Ask a follow-up</div>
+      <div class="compare-item new">Monthly refresh in 5 minutes</div>
+    </div>
+  </div>
+</section>
+
+<section id="what-you-can-ask">
+  <h2>What you can ask</h2>
+  <p class="section-sub">Open Claude Code in this directory and ask anything.</p>
+  <div class="prompts">
+    <div class="prompt-card">
+      <h3>💰 Find wasted ad spend</h3>
+      <p>"Find every keyword where we're paying for clicks but already rank positions 1-5 organically."</p>
+    </div>
+    <div class="prompt-card">
+      <h3>📈 Quick ranking wins</h3>
+      <p>"Which queries are stuck on page 2 with over 500 impressions? These are our easiest wins."</p>
+    </div>
+    <div class="prompt-card">
+      <h3>🎯 Content gaps</h3>
+      <p>"Which paid search terms have zero organic presence? These are topics we should be writing about."</p>
+    </div>
+    <div class="prompt-card">
+      <h3>📉 Fix bounce pages</h3>
+      <p>"Which pages rank well in GSC but have high bounce rates in GA4? These need improvement."</p>
+    </div>
+    <div class="prompt-card">
+      <h3>🤖 AI visibility</h3>
+      <p>"Are our pages being cited in Google AI Overviews? Which pages compete for the same AI citations?"</p>
+    </div>
+    <div class="prompt-card">
+      <h3>📋 Client reports</h3>
+      <p>"Write a full monthly SEO report from all our data. Save it to reports/ as markdown."</p>
+    </div>
+    <div class="prompt-card">
+      <h3>📊 Spreadsheet output</h3>
+      <p>"Turn the paid-organic gap analysis into a CSV I can send to the client."</p>
+    </div>
+    <div class="prompt-card">
+      <h3>💬 Lead data</h3>
+      <p>"Which organic keywords drove the most form submissions this month?"</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Real results</h2>
+  <p class="section-sub">Run for a higher education client. Analysis time: 90 seconds.</p>
+  <div class="stats">
+    <div class="stat"><span class="stat-number">2,742</span><div class="stat-label">Search terms with wasted ad spend</div></div>
+    <div class="stat"><span class="stat-number">351</span><div class="stat-label">Opportunities to reduce paid spend</div></div>
+    <div class="stat"><span class="stat-number">33</span><div class="stat-label">Organic queries paid could amplify</div></div>
+    <div class="stat"><span class="stat-number">41</span><div class="stat-label">Content gaps identified</div></div>
+  </div>
+  <p style="color:#555;font-size:13px;text-align:center">The manual equivalent — downloading CSVs, VLOOKUPing, categorising — takes most of an afternoon.</p>
+</section>
+
+<section>
+  <h2>What it connects</h2>
+  <p class="section-sub">One project directory. All your marketing data.</p>
+  <div class="sources">
+    <div class="source"><div class="source-name">Google Search Console</div><div class="source-desc">Queries, pages, clicks, impressions, CTR, position</div></div>
+    <div class="source"><div class="source-name">Google Analytics 4</div><div class="source-desc">Sessions, bounce rates, conversions by channel</div></div>
+    <div class="source"><div class="source-name">Google Ads</div><div class="source-desc">Search terms, spend, conversions, impression share</div></div>
+    <div class="source"><div class="source-name">Google Forms</div><div class="source-desc">Lead data — connect traffic to actual enquiries</div></div>
+    <div class="source"><div class="source-name">AI Visibility</div><div class="source-desc">Citations in ChatGPT, Copilot, Perplexity, AI Overviews</div></div>
+  </div>
+</section>
+
+<section id="setup">
+  <h2>Get started in 5 steps</h2>
+  <p class="section-sub">About 1 hour first time. 5 minutes every month after that.</p>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><div class="step-content"><h3>Clone the repo</h3><p><code>git clone https://github.com/kenneththapelo29/SEO-Command-Centre-.git</code></p></div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-content"><h3>Install dependencies</h3><p><code>pip install -r requirements.txt</code></p></div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-content"><h3>Set up Google Cloud</h3><p>Create a service account, enable the Search Console and Analytics APIs, download the JSON key, add it to your GSC and GA4 properties.</p></div></div>
+    <div class="step"><div class="step-num">4</div><div class="step-content"><h3>Configure your site</h3><p>Edit <code>config.json</code> with your domain, GSC property URL and GA4 property ID.</p></div></div>
+    <div class="step"><div class="step-num">5</div><div class="step-content"><h3>Fetch and ask</h3><p><code>python run_fetch.py --sources gsc,ga4</code> — then open Claude Code and start asking questions.</p></div></div>
+  </div>
+</section>
+
+<footer>
+  <p>SEO Command Center — Built by <a href="https://github.com/kenneththapelo29">kenneththapelo29</a></p>
+  <p style="margin-top:8px">Point it at any site. Start asking questions.</p>
+</footer>
+
+</body>
+</html>"""
+open(path, "w").write(html)
+print("Done")
+EOF
